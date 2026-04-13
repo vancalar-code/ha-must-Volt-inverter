@@ -267,6 +267,10 @@ PH1100_SENSORS = [
     Sensor(25324, "TotalGridDischargeEnergy",        None,    "kWh",    Platform.SENSOR,               SensorDeviceClass.ENERGY,          True,  ),
     Sensor(25336, "TotalMainsChargeEnergyCT",        None,    "kWh",    Platform.SENSOR,               SensorDeviceClass.ENERGY,          True,  ),
     Sensor(25338, "TotalMainsDischargeEnergyCT",     None,    "kWh",    Platform.SENSOR,               SensorDeviceClass.ENERGY,          True,  ),
+    Sensor(10121, "WorkMode",                        None,  None,  Platform.SELECT,  None,  True,  ),
+    Sensor(10124, "SoCHigh",                         None,  "%",   Platform.NUMBER,  None,  True,  ),
+    Sensor(10125, "SoCLow",                          None,  "%",   Platform.NUMBER,  None,  True,  ),
+    Sensor(20213, "AntirefluxEnable",                None,  None,  Platform.SWITCH,  None,  True,  ),
 ]
 # fmt: on
 
@@ -280,6 +284,7 @@ OPTIONS = {
     "ChargerWorkstate": ["initialization", "selftest", "work", "stop"],
     "MpptState": ["stop", "mppt", "current_limiting"],
     "ChargingState": ["stop", "absorb_charge", "float_charge", "equalization_charge"],
+     "WorkMode": ["store_mode","load_first","battery_first","grid_first","advanced_mode"],
 }
 
 # fmt: off
@@ -310,6 +315,8 @@ RANGES = {
     "InverterCurrentC":               lambda data: Range(0,     0xFFFF, 1   ),
     "GridCurrentC":                   lambda data: Range(0,     0xFFFF, 1   ),
     "LoadCurrentC":                   lambda data: Range(0,     0xFFFF, 1   ),
+    "SoCHigh":                        lambda data: Range(0, 100, 1),
+    "SoCLow":                         lambda data: Range(0, 100, 1),
 }
 # fmt: on
 
