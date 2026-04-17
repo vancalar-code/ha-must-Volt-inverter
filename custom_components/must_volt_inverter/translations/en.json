@@ -24,7 +24,7 @@
         "data": {
           "device": "USB or Serial device path",
           "baudrate": "Baud rate",
-          "parity": "Parity (‘E’ven, ‘O’dd or ‘N’one)",
+          "parity": "Parity ('E'ven, 'O'dd or 'N'one)",
           "stopbits": "Stop bits (1, 1.5, 2)",
           "bytesize": "Byte size (7, 8)"
         },
@@ -90,7 +90,7 @@
         "data": {
           "device": "USB or Serial device path",
           "baudrate": "Baud rate",
-          "parity": "Parity (‘E’ven, ‘O’dd or ‘N’one)",
+          "parity": "Parity ('E'ven, 'O'dd or 'N'one)",
           "stopbits": "Stop bits (1, 1.5, 2)",
           "bytesize": "Byte size (7, 8)"
         },
@@ -227,7 +227,7 @@
       "batteryvlowalarm": { "name": "Battery Low Voltage Alarm" },
       "batterysoclowalarm": { "name": "Battery SOC Low Alarm" },
       "eqchargevoltage": { "name": "EQ Charge Voltage" },
-      "usermodebatvmax": { "name": "User Mode Battery Voltage Max" },
+      "usermodebattvmax": { "name": "User Mode Battery Voltage Max" },
       "usermodebattvmin": { "name": "User Mode Battery Voltage Min" },
       "wmsochigh": { "name": "Work Mode SOC High" },
       "wmsoclow": { "name": "Work Mode SOC Low" },
