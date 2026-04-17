@@ -135,3 +135,16 @@ cards:
     entities:
       - entity: number.voltultra_bms_type
       - entity: switch.voltultra_antireflux_enable
+
+  # ── RTC ───────────────────────────────────────────────────────────────────────
+  - type: entities
+    title: RTC (Zegar)
+    show_header_toggle: false
+    entities:
+      - entity: number.voltultra_rtc_year
+      - entity: number.voltultra_rtc_month
+      - entity: number.voltultra_rtc_day
+      - entity: number.voltultra_rtc_day_of_the_week
+      - entity: number.voltultra_rtc_hour
+      - entity: number.voltultra_rtc_minutes
+      - entity: number.voltultra_rtc_seconds
