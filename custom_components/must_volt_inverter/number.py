@@ -1,7 +1,7 @@
 import logging
 from typing import Any
 
-from homeassistant.components.number import NumberEntity
+from homeassistant.components.number import NumberEntity, NumberMode
 from homeassistant.core import callback
 from homeassistant.const import Platform
 
@@ -40,6 +40,7 @@ class MustInverterNumber(NumberEntity):
         self._attr_native_unit_of_measurement = sensor_info.unit
         self._attr_device_class = sensor_info.device_class
         self._attr_entity_registry_enabled_default = sensor_info.enabled
+        self._attr_mode = NumberMode.BOX
 
         if self._key in RANGES:
             range = RANGES.get(self._key)(self._inverter.data)
