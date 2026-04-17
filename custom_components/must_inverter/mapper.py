@@ -9,9 +9,9 @@ _LOGGER = logging.getLogger(__name__)
 def int16(address, registers):
     val = registers[address]
     bits = 16
-    if (val & (1 << (bits - 1))) != 0:  # if sign bit is set e.g., 8bit: 128-255
-        val = val - (1 << bits)  # compute negative value
-    return val  # return positive value as is
+    if (val & (1 << (bits - 1))) != 0:
+        val = val - (1 << bits)
+    return val
 
 
 def uint16(address, registers):
@@ -237,7 +237,6 @@ def convert_partArr5(partArr5):
     return result
 
 
-# used for PV1900
 def convert_battery_status(registers):
     """Convert battery status registers."""
     result = {}
@@ -251,18 +250,15 @@ def convert_battery_status(registers):
     return result
 
 
-# used for PV1900
 def convert_pv_data(registers):
     """Convert PV-specific registers."""
     result = {}
     try:
-        # PV1 data
         if 15207 in registers:
             result["PV1ChargerCurrent"] = registers[15207]
         if 15208 in registers:
             result["PV1ChargerPower"] = registers[15208]
 
-        # PV2 data
         if 16205 in registers:
             result["PV2Voltage"] = registers[16205]
         if 16207 in registers:
@@ -280,9 +276,24 @@ def convert_ph1100_partArr1(partArr1):
 
     # fmt: off
     result = {}
+    result["BatteryVLowFault"] =             int16(10103, partArr1)
+    result["BatteryVLowRecover"] =           int16(10104, partArr1)
+    result["MaximumChargeCurrent"] =         int16(10105, partArr1)
+    result["MaximumDischargeCurrent"] =      int16(10106, partArr1)
+    result["MaximumGridChargeCurrent"] =     int16(10107, partArr1)
+    result["ConstantChargeV"] =              int16(10108, partArr1)
+    result["FloatChargeV"] =                 int16(10109, partArr1)
+    result["MinCurrentChargeVoltage"] =      int16(10110, partArr1)
+    result["MinCurrentChargeCurrent"] =      int16(10111, partArr1)
+    result["MinCurrentChargeSoc"] =          int16(10113, partArr1)
+    result["BatteryVLowAlarm"] =             int16(10114, partArr1)
+    result["BatterySocLowAlarm"] =           int16(10115, partArr1)
+    result["EQChargeVoltage"] =              int16(10116, partArr1)
     result["BatteryEqualizationInterval"] =  int16(10117, partArr1)
     result["BatteryEqualizationStartTime"] = time(10118, partArr1)
     result["BatteryEqualizationEndTime"] =   time(10119, partArr1)
+    result["UserModeBattVMax"] =             int16(10122, partArr1)
+    result["UserModeBattVMin"] =             int16(10123, partArr1)
     # fmt: on
 
     return result
@@ -391,10 +402,9 @@ def convert_ph1100_partArr4(partArr4):
     # fmt: on
 
     return result
-    
-    
+
+
 def convert_ph1100_workmode(registers):
-    """Convert work mode register for PH1100."""
     if registers is None:
         return None
     result = {}
@@ -404,27 +414,74 @@ def convert_ph1100_workmode(registers):
 
 
 def convert_ph1100_soc_high(registers):
-    """Convert SoC High register for PH1100."""
     if registers is None:
         return None
     result = {}
     if 10124 in registers:
-        result["SoCHigh"] = registers[10124]
+        result["WMSocHigh"] = registers[10124]
     return result
 
 
 def convert_ph1100_soc_low(registers):
-    """Convert SoC Low register for PH1100."""
     if registers is None:
         return None
     result = {}
     if 10125 in registers:
-        result["SoCLow"] = registers[10125]
+        result["WMSocLow"] = registers[10125]
+    return result
+
+
+def convert_ph1100_advmodedefault(registers):
+    if registers is None:
+        return None
+    result = {}
+    result["AdvModeDefault"] = uint16(10126, registers)
+    return result
+
+
+def convert_ph1100_adv_mode(registers):
+    if registers is None:
+        return None
+    result = {}
+    result["AdvModeT1Start"]    = time(10127, registers)
+    result["AdvModeT1End"]      = time(10128, registers)
+    result["AdvModeT1WorkMode"] = uint16(10129, registers)
+    result["AdvModeT2Start"]    = time(10130, registers)
+    result["AdvModeT2End"]      = time(10131, registers)
+    result["AdvModeT2WorkMode"] = uint16(10132, registers)
+    result["AdvModeT3Start"]    = time(10133, registers)
+    result["AdvModeT3End"]      = time(10134, registers)
+    result["AdvModeT3WorkMode"] = uint16(10135, registers)
+    result["AdvModeT4Start"]    = time(10136, registers)
+    result["AdvModeT4End"]      = time(10137, registers)
+    result["AdvModeT4WorkMode"] = uint16(10138, registers)
+    result["AdvModeT5Start"]    = time(10139, registers)
+    result["AdvModeT5End"]      = time(10140, registers)
+    result["AdvModeT5WorkMode"] = uint16(10141, registers)
+    result["AdvModeT6Start"]    = time(10142, registers)
+    result["AdvModeT6End"]      = time(10143, registers)
+    result["AdvModeT6WorkMode"] = uint16(10144, registers)
+    result["BMSType"] =           uint16(10145, registers)
+    result["BatterySocLowFault"] =   uint16(10148, registers)
+    result["BatterySocLowRecover"] = uint16(10149, registers)
+    return result
+
+
+def convert_ph1100_rtc(registers):
+    if registers is None:
+        return None
+    result = {}
+    result["RTCYear"]         = uint16(20201, registers)
+    result["RTCMonth"]        = uint16(20202, registers)
+    result["RTCDay"]          = uint16(20203, registers)
+    result["RTCDayOfTheWeek"] = uint16(20204, registers)
+    result["RTCHour"]         = uint16(20205, registers)
+    result["RTCMinutes"]      = uint16(20206, registers)
+    result["RTCSeconds"]      = uint16(20207, registers)
     return result
 
 
 def convert_ph1100_antireflux(registers):
-    """Convert antireflux register for PH1100."""
     if registers is None:
         return None
     result = {}
