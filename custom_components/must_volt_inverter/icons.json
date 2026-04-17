@@ -1,4 +1,7 @@
 {
+    "integration": {
+        "icon": "mdi:power"
+    },
     "entity": {
         "binary_sensor": {
             "batteryrelay": {
