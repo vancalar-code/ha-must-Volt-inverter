@@ -391,3 +391,43 @@ def convert_ph1100_partArr4(partArr4):
     # fmt: on
 
     return result
+    
+    
+def convert_ph1100_workmode(registers):
+    """Convert work mode register for PH1100."""
+    if registers is None:
+        return None
+    result = {}
+    if 10121 in registers:
+        result["WorkMode"] = registers[10121]
+    return result
+
+
+def convert_ph1100_soc_high(registers):
+    """Convert SoC High register for PH1100."""
+    if registers is None:
+        return None
+    result = {}
+    if 10124 in registers:
+        result["SoCHigh"] = registers[10124]
+    return result
+
+
+def convert_ph1100_soc_low(registers):
+    """Convert SoC Low register for PH1100."""
+    if registers is None:
+        return None
+    result = {}
+    if 10125 in registers:
+        result["SoCLow"] = registers[10125]
+    return result
+
+
+def convert_ph1100_antireflux(registers):
+    """Convert antireflux register for PH1100."""
+    if registers is None:
+        return None
+    result = {}
+    if 20213 in registers:
+        result["AntirefluxEnable"] = registers[20213]
+    return result
