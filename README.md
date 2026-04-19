@@ -1,4 +1,4 @@
-# Must inverter integration for Home Assistant
+# Must inverter integration for Home Assistant Feat: added VOLT/MustPH11 full support
 
 [![GitHub Release][releases-shield]][releases]
 [![GitHub Activity][commits-shield]][commits]
