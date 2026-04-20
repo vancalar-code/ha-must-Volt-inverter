@@ -5,7 +5,6 @@
 [![License][license-shield]](LICENSE)
 ![Project Maintenance][maintenance-shield]
 
-[![Buy me a coffee!](https://www.buymeacoffee.com/assets/img/custom_images/black_img.png)][buymecoffee]
 
 [![Open your Home Assistant instance and open a repository inside the Home Assistant Community Store.](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=mukaschultze&repository=ha-must-inverter&category=integration)
 
@@ -27,7 +26,7 @@ power production, battery status, and more, directly from your Must solar invert
 
 ## Supported Devices
 
-This integration is tested using a Must Solar PV18-3024 VPM (aka PV1800), PV19 / PV1900 EXP Series (4/6KW), PH11 / PH1100 EU Series (AC:380V 5-12KW). However, it should work with other models that use the same communication protocol, such as the PH1800 and EP1800 series.
+This integration is tested using a Must Solar PV18-3024 VPM (aka PV1800), PV19 / PV1900 EXP Series (4/6KW), PH11 / PH1100 EU Series (AC:380V 5-12KW), VOLT Ultra Polish inverter. However, it should work with other models that use the same communication protocol, such as the PH1800 and EP1800 series.
 
 ## Disclaimer
 
