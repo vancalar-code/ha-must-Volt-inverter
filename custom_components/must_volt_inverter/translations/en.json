@@ -234,6 +234,7 @@
       "bmstype": { "name": "BMS Type" },
       "batterysoclowfault": { "name": "Battery SOC Low Fault" },
       "batterysoclowrecover": { "name": "Battery SOC Low Recover" },
+      "maxexportpowerpercentage": { "name": "Maximum Export Power" },
       "rtcyear": { "name": "RTC Year" },
       "rtcmonth": { "name": "RTC Month" },
       "rtcday": { "name": "RTC Day" },
