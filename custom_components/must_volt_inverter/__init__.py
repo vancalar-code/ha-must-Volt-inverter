@@ -49,6 +49,7 @@ from .mapper import (
     convert_ph1100_soc_high,
     convert_ph1100_soc_low,
     convert_ph1100_antireflux,
+    convert_ph1100_max_export,
     convert_ph1100_advmodedefault,
     convert_ph1100_adv_mode,
     convert_ph1100_rtc,
@@ -289,6 +290,7 @@ class MustInverter:
                 (10127, 10149, convert_ph1100_adv_mode),
                 (20201, 20207, convert_ph1100_rtc),
                 (20213, 20213, convert_ph1100_antireflux),
+                (20105, 20105, convert_ph1100_max_export),
             ]
         else:
             registersAddresses = [
