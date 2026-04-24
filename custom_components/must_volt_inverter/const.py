@@ -222,6 +222,7 @@ PH1100_SENSORS = [
     Sensor(10145, "BMSType",                         1,       None,     Platform.NUMBER,               None,                              True,  ),
     Sensor(10148, "BatterySocLowFault",              1,       "%",      Platform.NUMBER,               None,                              True,  ),
     Sensor(10149, "BatterySocLowRecover",            1,       "%",      Platform.NUMBER,               None,                              True,  ),
+    Sensor(20105, "MaxExportPowerPercentage",        0.1,     "%",      Platform.NUMBER,               None,                              True,  ),
     # Charger Display Messages
     Sensor(15104, "BatteryVoltage",                  0.1,     "V",      Platform.SENSOR,               SensorDeviceClass.VOLTAGE,         True,  ),
     Sensor(15105, "BattCurrent",                     0.1,     "A",      Platform.SENSOR,               SensorDeviceClass.CURRENT,         True,  ),
@@ -387,6 +388,7 @@ RANGES = {
     "BMSType":                        lambda data: Range(0,     100,    1   ),
     "BatterySocLowFault":             lambda data: Range(0,     100,    1   ),
     "BatterySocLowRecover":           lambda data: Range(0,     100,    1   ),
+    "MaxExportPowerPercentage":       lambda data: Range(0,     100,    1   ),
 }
 # fmt: on
 
